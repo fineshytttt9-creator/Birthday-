@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myy Dalli Bitchh — Birthday.exe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;1,500;1,700&display=swap');
+
+:root{
+  --bg:#09070b; --card:#151019; --pink:#ff78b5; --soft:#ffc7df;
+  --white:#fff7fb; --muted:#b9a9b4; --line:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:radial-gradient(circle at 50% -10%,#32152b 0,#09070b 42%);
+  color:var(--white);font-family:DM Mono,monospace;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;z-index:99;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+.screen{
+  min-height:100svh;display:none;place-items:center;padding:28px 18px;
+  position:relative;overflow:hidden;
+}
+.screen.active{display:grid;animation:fade .7s ease both}
+.wrap{width:min(760px,100%);text-align:center;position:relative;z-index:2}
+.eyebrow{font-size:11px;letter-spacing:3px;color:var(--pink);text-transform:uppercase}
+h1,h2{font-family:"Playfair Display",serif;margin:12px 0}
+h1{font-size:clamp(45px,12vw,92px);line-height:.95}
+h2{font-size:clamp(34px,8vw,58px)}
+p{color:var(--muted);line-height:1.8}
+.accent{color:var(--pink)}
+button{
+  border:1px solid rgba(255,120,181,.45);background:#1b1018;color:var(--white);
+  padding:14px 22px;border-radius:999px;font:500 12px DM Mono;cursor:pointer;
+  transition:.25s;box-shadow:0 0 30px rgba(255,120,181,.08)
+}
+button:hover{transform:translateY(-3px);background:#26131f;box-shadow:0 0 35px rgba(255,120,181,.22)}
+.btnrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+  border:1px solid var(--line);border-radius:26px;padding:24px;
+  backdrop-filter:blur(12px);box-shadow:0 20px 70px rgba(0,0,0,.35)
+}
+.fake-browser{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#f6d9e7;color:#5e2746;text-align:left}
+.browser-top{height:32px;background:#eee1e7;display:flex;align-items:center;gap:6px;padding:0 12px}
+.dot{width:8px;height:8px;border-radius:50%;background:#b9a4af}
+.browser-body{padding:30px 20px;text-align:center;min-height:250px;display:grid;place-items:center}
+.question{font-family:"Playfair Display",serif;font-size:32px}
+.pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#fff;color:#8c3d64;font-size:10px;margin:5px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.photo{
+  aspect-ratio:3/4;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+  transform:rotate(var(--r));box-shadow:0 18px 40px #0008;background:#1a131a
+}
+.photo:nth-child(1){--r:-2deg}.photo:nth-child(2){--r:1deg}.photo:nth-child(3){--r:-1deg}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
+.memes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.meme{aspect-ratio:1;border:1px dashed #6e4a5d;border-radius:18px;display:grid;place-items:center;padding:16px;color:#9e8793;background:#100c11}
+.letter{text-align:left;font-family:"Playfair Display",serif;font-size:19px;line-height:1.8;color:#f7e9ef}
+.letter p{font-family:"Playfair Display",serif;color:#f7e9ef}
+.nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:50;display:none}
+.nav.show{display:block}
+.floating{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.heart{position:absolute;bottom:-30px;color:var(--pink);opacity:.5;animation:float linear forwards}
+#noBtn{position:relative}
+.small{font-size:10px;color:#8d7a86}
+.reveal{opacity:0;transform:translateY(18px);transition:.8s}
+.reveal.show{opacity:1;transform:none}
+.big-love{font-size:clamp(55px,15vw,120px);font-family:"Playfair Display",serif;font-style:italic}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes float{to{transform:translateY(-115vh) rotate(30deg);opacity:0}}
+@media(max-width:600px){
+  .photo-grid,.memes{grid-template-columns:1fr 1fr}
+  .photo:nth-child(3){grid-column:1/-1;max-width:60%;justify-self:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Add your own copy of the Miguel/Miguel phonk track as assets/music.mp3 -->
+<audio id="music" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="screen active" id="s1">
+  <div class="floating"></div>
+  <div class="wrap">
+    <div class="eyebrow">birthday.exe has loaded</div>
+    <h1>hey, <span class="accent">bitch.</span></h1>
+    <p>You've officially survived another year.<br>Unfortunately, I have too.</p>
+    <div class="card" style="margin-top:25px">
+      <div class="question">Do you deserve a birthday surprise?</div>
+      <div class="btnrow">
+        <button onclick="next(2)">YES, obviously</button>
+        <button id="noBtn" onclick="moveNo()">NO 💀</button>
+      </div>
+      <div class="small" style="margin-top:15px">choose wisely. i'm judging.</div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="s2">
+  <div class="wrap">
+    <div class="eyebrow">breaking news</div>
+    <h2>It's actually <span class="accent">your birthday.</span></h2>
+    <div class="fake-browser">
+      <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="browser-body">
+        <div>
+          <div class="question">Congratulations, my Dalli bitch 🎀</div>
+          <p>You have unlocked: <b>another year of me roasting you.</b></p>
+          <span class="pill">rare achievement</span>
+          <span class="pill">twin bestie DLC</span>
+          <span class="pill">no refunds</span>
+        </div>
+      </div>
+    </div>
+    <div class="btnrow"><button onclick="next(3)">okay fine →</button></div>
+  </div>
+</div>
+
+<div class="screen" id="s3">
+  <div class="wrap">
+    <div class="eyebrow">evidence folder #01</div>
+    <h2>Proof you exist. <span class="accent">Sadly.</span></h2>
+    <p>First birthday with me, so obviously I'm documenting the victim. Long-distance edition 🌎💀</p>
+    <div class="photo-grid">
+      <div class="photo"><img src="assets/photo1.jpg"></div>
+      <div class="photo"><img src="assets/photo2.jpg"></div>
+      <div class="photo"><img src="assets/photo3.jpg"></div>
+    </div>
+    <p class="small">three photos. zero dignity. infinite long-distance allegations.</p>
+    <div class="btnrow"><button onclick="next(4)">more evidence →</button></div>
+  </div>
+</div>
+
+<div class="screen" id="s4">
+  <div class="wrap">
+    <div class="eyebrow">evidence folder #02</div>
+    <h2>Our friendship, <span class="accent">according to science.</span></h2>
+    <div class="memes">
+      <div class="meme" style="padding:0;overflow:hidden;grid-column:1/-1">
+        <img src="assets/silly.jpg" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="meme" style="padding:0;overflow:hidden">
+        <img src="assets/cat.jpg" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="meme">MEME 03<br><br>add another inside joke here 💀</div>
+    </div>
+    <p><b>I silly. U silly. We silly.</b><br>Basically the official description of this friendship. 🐈‍⬛</p>
+    <div class="btnrow"><button onclick="next(5)">okay, enough slander →</button></div>
+  </div>
+</div>
+
+<div class="screen" id="s5">
+  <div class="wrap">
+    <div class="eyebrow">classified message</div>
+    <h2>A letter to my <span class="accent">favourite idiot.</span></h2>
+    <div class="card letter">
+      <p>Dear Myy Dalli Bitchh,</p>
+      <p>I was going to write something incredibly sweet here... then I remembered you're kinda dumb. 😭</p>
+      <p>...but then I remembered that you're you, and honestly you don't deserve that much peace.</p>
+      <p>Still, jokes aside, this is your <b>first birthday with me</b>, and I'm genuinely glad you're here. Somehow, in the tiny amount of time we've had, you've already become one of those people I can annoy, roast, bother, and still want around every day.</p>
+      <p>You're genuinely a menace. A certified problem. Your brain occasionally goes on airplane mode. 💀</p>
+      <p>But you're <i>my</i> public safety concern. 🖤 And yes, the long-distance allegations are real.</p>
+      <p>So happy birthday, twin. I hope this year gives you a ridiculous amount of happiness, good memories, and enough patience to deal with me.</p>
+      <p>Now stop getting emotional. That's embarrassing.</p>
+      <p>— your favourite person, obviously.</p>
+    </div>
+    <div class="btnrow"><button onclick="next(6)">one last thing…</button></div>
+  </div>
+</div>
+
+<div class="screen" id="s6">
+  <div class="floating"></div>
+  <div class="wrap">
+    <div class="eyebrow">final boss</div>
+    <div class="big-love">happy birthday.</div>
+    <h2>MY <span class="accent">DALLI BITCHH</span> 🖤</h2>
+    <p>First birthday with me. Definitely not the last.<br>You're stuck with me now. Long-distance or not. Good luck. 😂</p>
+    <div class="btnrow"><button onclick="confetti()">🎀 make it rain</button></div>
+    <p class="small" style="margin-top:30px">made with love, bad jokes, cats & questionable decisions</p>
+  </div>
+</div>
+
+<div class="nav" id="nav"><button onclick="next(current+1)">next →</button></div>
+
+<script>
+let current=1;
+function next(n){
+  if(n>6)n=6;
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+  current=n;
+  document.getElementById('nav').classList.toggle('show', n>1 && n<6);
+  const music=document.getElementById('music');
+  music.play().catch(()=>{});
+  spawnHearts();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function moveNo(){
+  const b=document.getElementById('noBtn');
+  b.style.position='absolute';
+  b.style.left=(Math.random()*180-90)+'px';
+  b.style.top=(Math.random()*80-40)+'px';
+  b.textContent=['nice try 💀','absolutely not','girl be serious','NOPE 😭'][Math.floor(Math.random()*4)];
+}
+function spawnHearts(){
+  const boxes=document.querySelectorAll('.floating');
+  boxes.forEach(box=>{
+    for(let i=0;i<9;i++){
+      const h=document.createElement('span');h.className='heart';
+      h.textContent=['♡','♥','✦','⋆'][Math.floor(Math.random()*4)];
+      h.style.left=Math.random()*100+'%';
+      h.style.fontSize=(10+Math.random()*18)+'px';
+      h.style.animationDuration=(5+Math.random()*5)+'s';
+      box.appendChild(h);
+      setTimeout(()=>h.remove(),10000);
+    }
+  });
+}
+function confetti(){
+  for(let i=0;i<90;i++){
+    const e=document.createElement('div');
+    e.textContent=['♥','✦','♡','🎀','✨'][Math.floor(Math.random()*5)];
+    e.style.position='fixed';e.style.left=Math.random()*100+'vw';e.style.top='-20px';
+    e.style.zIndex=100;e.style.fontSize=(12+Math.random()*24)+'px';
+    e.style.transition='transform 2.5s linear,opacity 2.5s';
+    document.body.appendChild(e);
+    requestAnimationFrame(()=>{e.style.transform=`translate(${(Math.random()-.5)*200}px, ${100+Math.random()*100}vh) rotate(${Math.random()*720}deg)`;e.style.opacity=0});
+    setTimeout(()=>e.remove(),2600);
+  }
+}
+spawnHearts();
+</script>
+</body>
+</html>

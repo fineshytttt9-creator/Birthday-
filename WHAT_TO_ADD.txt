@@ -1,0 +1,50 @@
+WHAT YOU NEED TO DO
+
+Already done for you:
+✓ Website design/code
+✓ 3 photos you uploaded
+✓ 2 cat memes/photos you uploaded
+✓ Dark/cute theme
+✓ Animations
+✓ Buttons
+✓ Birthday letter draft
+✓ Roast jokes
+✓ Final confetti screen
+
+YOU ONLY NEED TO DO THESE:
+
+1) MUSIC
+- Get an audio file you have permission/right to use.
+- Rename it exactly: music.mp3
+- Put it inside the `assets` folder.
+- The site will try to play it after the first button.
+
+2) MORE MEMES (OPTIONAL)
+- Add meme images to `assets`.
+- You can replace the remaining meme placeholder by editing `index.html`.
+- If you don't know how, send me the memes and I can put them in for you.
+
+3) PERSONAL DETAILS (OPTIONAL BUT RECOMMENDED)
+Send me:
+- Her actual name/nickname
+- 2-4 inside jokes
+- 1-2 things you always roast her for
+- 2-3 genuinely sweet things about her
+- Any specific line you want in the letter
+
+I can then personalize the text for you.
+
+4) HOST IT FOR FREE
+- Create/sign in to GitHub.
+- Create a new repository, e.g. `birthday`.
+- Upload ALL files/folders from this website.
+- Go to Settings → Pages.
+- Choose Deploy from a branch.
+- Select `main` and `/root`.
+- Save.
+- GitHub will give you a public website link.
+
+IMPORTANT:
+Keep the `assets` folder and `index.html` together. Do not upload only index.html.
+
+The ZIP file is just a package. You can extract it first.
